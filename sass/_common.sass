@@ -1,4 +1,549 @@
++font("Peugeot", "pr")
++font("Peugeot Bold", "pb")
++font("Peugeot Light", "pl")
++font("Peugeot Light Italic", "pli")
+=pr
+	font-family: "Peugeot", Arial, sans-serif
+	font-weight: normal
+	font-style: normal
+=pb
+	font-family: "Peugeot Bold", Arial, sans-serif
+	font-weight: normal
+	font-style: normal
+=pl
+	font-family: "Peugeot Light", Arial, sans-serif
+	font-weight: normal
+	font-style: normal
+=pli
+	font-family: "Peugeot Light Italic", Arial, sans-serif
+	font-weight: normal
+	font-style: normal
+
 body
-	font-family: Arial, sans-serif
+	+pr
 	font-size: 14px
+	color: #333
 	line-height: 1.4
+	background: #f1f3f2
+	min-width: 1120px
+	+font-smoothing
+
+%in
+	width: 1040px
+	margin: 0 auto
+
+.container
+	@extend %in
+
+.out
+	width: 1080px
+	margin: 0 auto
+	background: #fff
+	// height: 500px // tmp
+
+.header
+	position: relative
+	height: 60px // tmp
+	margin: 0 -20px
+	font-size: 16px
+	color: #fff
+	+g(#2991bb, #1d6b99)
+	&:before,
+	&:after
+		position: absolute
+		top: 100%
+		content: ""
+	&:before
+		left: 0
+		+s(arrow_left)
+	&:after
+		right: 0
+		+s(arrow_right)
+	a
+		color: #fff
+		text-decoration: none
+	.container
+		+clr
+	.header__logo
+		display: inline-block
+		vertical-align: top
+		margin-top: 10px
+		margin-right: 43px
+		margin-left: 4px
+		+hidetext
+		+s(logo)
+	.header__menu
+		display: inline-block
+		vertical-align: top
+		margin-top: 15px
+		li
+			display: inline-block
+			line-height: 1
+			text-transform: uppercase
+			margin-left: 30px
+			font-size: 18px
+			letter-spacing: 0.03em
+			&:first-child
+				margin-left: 0
+			&:hover
+				a
+					border-color: transparent
+		a
+			display: block
+			line-height: 24px
+			color: inherit
+			text-decoration: none
+			border-bottom: 2px solid #fff
+	.header__order
+		float: right
+		text-transform: uppercase
+		padding: 5px 11px
+		font-size: 17px
+		letter-spacing: 0.04em
+		margin-top: 11px
+		+g(#196a99, #0b3a56)
+		// +transition(all .2s linear)
+		&:hover
+			+g(#0b3a56, #196a99)
+
+.intro
+	position: relative
+	min-height: 497px
+	background: #000 url("../img/carpic.jpg")
+	+cover
+	color: #fff
+	overflow: hidden
+	.form
+		position: absolute
+		bottom: 20px
+		right: 20px
+	.intro__text
+		+pb
+		font-size: 40px
+		text-transform: uppercase
+		margin-left: -20px
+		p
+			margin-bottom: 5px
+		span
+			display: inline-block
+			background: #000
+			background: rgba(#000, .8)
+			padding: 9px 20px 3px 19px
+
+.form
+	position: relative
+	text-align: center
+	border: 1px solid rgba(30,109,154,.2)
+	background-color: #fff
+	color: #042b41
+	width: 285px
+	height: 317px
+	padding: 11px 13px 15px
+	&.form_mod
+		background: rgba(#fff, .8)
+	.form__title
+		+pb
+		font-size: 20px
+		color: #2277a4
+		text-transform: uppercase
+	.form__text
+		+pl
+		line-height: 1.6
+		font-size: 14px
+		// font-size: 16px
+		margin-bottom: 9px
+	.form__fields
+	.input
+		+pl
+		display: block
+		width: 100%
+		color: #999
+		margin-bottom: 13px
+		padding: 8px
+		font-size: 13px
+		border: 1px solid #ccc
+		+placeholder-color(#999)
+		&:focus
+			+placeholder-color(transparent)
+	.form__submit
+		display: block
+		width: 100%
+		padding-left: 0
+		padding-right: 0
+	.form__msg
+		padding-top: 120px
+		// +vertical
+
+.btn
+	position: relative
+	+pb
+	display: inline-block
+	padding: 4px
+	color: #fff
+	font-size: 20px
+	text-transform: uppercase
+	text-align: center
+	text-decoration: none
+	+text-shadow(0 1px 0 rgba(0,0,0,.5))
+	border: 1px solid #f1d100
+	+g(#ffc600, #f48f00)
+	+box-shadow(inset 1px 0 1px #ffeaa1)
+	+font-smoothing
+	&:before
+		position: absolute
+		top: 1px
+		left: 1px
+		right: 1px
+		background: url('../img/btn_shadow.jpg') repeat-x
+		height: 2px
+		content: ""
+	&:hover
+		+g(#f48f00, #ffc600)
+	&:active
+		position: relative
+		top: 1px
+
+.benefits
+	background: #2991bb
+	+g(#2991bb, #1d6b99)
+	+clr
+.benefit
+	position: relative
+	+pl
+	float: left
+	height: 123px
+	line-height: 123px
+	color: #fff
+	+text-shadow(0 2px 1px rgba(0,0,0,.65))
+	font-size: 18px
+	width: 330px
+	padding-left: 108px
+	&:before
+		position: absolute
+		content: ""
+	&.benefit_tel
+		&:before
+			+s(tel)
+			top: 17px
+			left: 18px
+	&.benefit_place
+		margin-left: 68px
+		&:before
+			+s(place)
+			top: 18px
+			left: -7px
+	&.benefit_car
+		width: 280px
+		margin-left: 70px
+		&:before
+			+s(car)
+			top: 34px
+			left: -40px
+	span
+		display: inline-block
+		vertical-align: middle
+		line-height: 1.2
+		// margin-top: -13px
+
+.options
+	margin: 19px 20px 50px
+	&.options_mod
+		.options__pic
+			width: 285px
+		.form
+			float: right
+			margin-left: 20px
+			&.form_left
+				float: left
+				margin-left: 0
+				margin-right: 20px
+	.options__head
+		text-align: center
+		margin-bottom: -1px
+	.options__title
+		position: relative
+		height: 59px
+		line-height: 59px
+		font-size: 30px
+		color: #2491b6
+		+pl
+		display: inline-block
+		text-transform: uppercase
+		padding: 0 22px
+		background: #f1f3f2
+		border-top: 1px solid #d9d9d9
+		&:before
+			position: absolute
+			top: -1px 
+			right: 100%
+			content: ""
+			+s(stitle_left)
+		&:after
+			position: absolute
+			top: -1px 
+			left: 100%
+			content: ""
+			+s(stitle_right)
+		span
+			+pb
+	.options__in
+		background: #f1f3f2
+		border: 1px solid #d9d9d9
+		padding: 25px 20px 0
+	.options__num
+		+justify
+		margin-bottom: 21px
+		li
+			+justify-child
+			+clr
+	.options__numtype
+		float: left
+		width: 40px
+		+pb
+		color: #2491b6
+		font-size: 40px
+		line-height: 40px
+		margin-top: 2px
+	.options__numtext
+		overflow: hidden
+		height: 40px
+		line-height: 40px
+		text-transform: uppercase
+		span
+			font-size: 16px
+			color: #333333
+			display: inline-block
+			vertical-align: middle
+			line-height: 1.2
+	.options__list
+	.options__item
+		border-top: 1px solid #dfdfdf
+		padding-top: 30px
+		margin-bottom: 50px
+	.options__heading
+		text-align: center
+		line-height: 80px
+		margin-bottom: 20px
+		+pb
+		font-size: 50px
+		color: #333
+		text-transform: uppercase
+		span
+			display: inline-block
+			vertical-align: middle
+			font-size: 120px
+			color: #2491b6
+			+text-shadow(0 2px 0 rgba(15,84,123,.91))
+			margin-right: 10px
+		b
+			+pb
+			display: inline-block
+			vertical-align: middle
+			line-height: 1
+			text-align: left
+
+	.options__info
+		+clr
+	.options__pic
+		float: left
+		width: 445px
+		border: 1px solid #fff
+		+box-shadow(0 5px 8px rgba(0,0,0,.69), 0 0 5px rgba(255,255,190,.6))
+		margin-right: 20px
+		&.options__pic_right
+			float: right
+			margin-right: 0
+			margin-left: 20px
+		img
+			display: block
+			width: 100%
+	.options__text
+		overflow: hidden
+		font-size: 18px
+		color: #333
+		p
+			margin-bottom: 5px
+	.options__note
+		+pli
+		color: #666666
+	.options__btn
+		margin-top: 10px
+		.btn
+			display: block
+			font-size: 25px
+			+pr
+			padding: 11px 0
+
+.media
+	.media__in
+		@extend %in
+		width: 955px
+	.media__title
+		text-align: center
+		text-transform: uppercase
+		font-size: 30px
+		color: #2491b6
+		margin-bottom: 20px
+		span
+			+pb
+
+.medfiles
+	+clr
+	margin-left: -5px
+	// width: 960px
+	// margin: 0 auto
+	.medfiles__col
+		// margin-left: -5px
+		float: left
+		width: 480px
+		// &:first-child
+			// width: 475px
+			// margin-left: -5px
+.block
+	float: left
+	overflow: hidden
+	margin-bottom: 5px
+	margin-left: 5px
+	&:hover
+		.block__href
+			&:before
+				opacity: 1
+			&:after
+				opacity: 1
+				+scale(1)
+	&.block_1
+		width: 155px
+		height: 155px
+	&.block_2
+		width: 315px
+		height: 315px
+	&.block_3
+		width: 475px
+		height: 475px
+	&.is-video
+		.block__href
+			&:after
+				content: none
+			&:before
+				position: absolute
+				top: 50%
+				left: 50%
+				margin-left: -23px
+				margin-top: -26px
+				+s(play)
+				content: ""
+				opacity: 1 !important
+	.block__pic
+		img
+			min-width: 100%
+	.block__href
+		position: relative
+		display: block
+		&:before
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			background: rgba(#000, .7)
+			content: ""
+			opacity: 0
+			+transition(all .2s linear)
+		&:after
+			position: absolute
+			top: 50%
+			left: 50%
+			margin-top: -16px
+			margin-left: -16px
+			+s(zoom)
+			content: ""
+			+transition(all .2s linear)
+			opacity: 0
+			+scale(0)
+
+.medfiles-btn
+	margin-top: 15px
+	margin-bottom: 20px
+	.btn
+		display: block
+		font-size: 25px
+		+pr
+		padding: 16px 0
+		// width: 960px
+		// margin: 0 auto
+
+.agreement
+	text-align: center
+	font-size: 12px
+	margin-top: 50px
+	margin-bottom: 20px
+	.container
+		width: 945px
+
+.footer
+	height: 360px
+	background: url('../img/footer_bg.jpg')
+	+cover
+	.container
+		position: relative
+	.form
+		position: absolute
+		top: 20px
+		right: 0
+
+.has-open-popup
+	overflow: hidden
+.overlay
+	display: none
+	position: fixed
+	top: 0
+	right: 0
+	left: 0
+	bottom: 0
+	z-index: 20000
+	background: #000
+	background: rgba(#000,.65)
+	text-align: center
+	overflow: auto
+	font-size: 0
+	&:before
+		content: ""
+		display: inline-block
+		vertical-align: middle
+		width: 0
+		height: 100%
+.popup
+	position: relative
+	display: inline-block
+	vertical-align: middle
+	margin: 50px 0
+	// width: 1000px
+	// background: #fafafa
+	// font-size: 12px
+	// border-radius: 10px
+	text-align: left
+	// +box
+	// overflow: hidden
+	// border-radius: 20px
+	// +box-shadow(0 0 8px rgba(#000, .6))
+	// em
+	// 	color: #817f7f
+	// 	a
+	// 		color: #949494 
+	// sup
+	// 	color: #db2121 
+	// .fa-star-half-empty
+	// 	color: $yellow   
+	// .fa-envelope-o
+	// 	color: #797979
+	// 	font-size: 42px   
+.popup__close
+	position: absolute
+	top: -12px
+	right: -12px
+	+s(close)
+
+
+
+
+
